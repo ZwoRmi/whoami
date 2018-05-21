@@ -12,7 +12,7 @@ server.listen(port, () => {
     server.get('/', (req, res) => {
 
         const requesterData = {
-            ipaddress: req.connection.remoteAddress,
+            ipaddress: req.headers['x-forwarded-for'] || req.connection.remoteAddress,
             language: req.header('accept-language').substring(0, 2),
             software: getOs(req.header('user-agent'))
         };

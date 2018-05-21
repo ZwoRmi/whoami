@@ -7,7 +7,8 @@ function getOs(userAgent) {
     return matches[1];
 }
 
-server.listen(3000, () => {
+const port = process.env.PORT;
+server.listen(port, () => {
     server.get('/', (req, res) => {
 
         const requesterData = {
